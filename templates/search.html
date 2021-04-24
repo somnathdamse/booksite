@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %} 
+{% load static %} 
+{% static "images" as baseUrl %}
+
+
+{% block title %}Search{% endblock title %}
+
+{% block body %}
+
+<h2>Search Results :</h2>
+{% comment %} {{ para.file}} {% endcomment %}
+{% comment %} {% if books %} {% endcomment %}
+       <h4>Book Name  and Book Description <h4>  
+
+      {% for post in allpost %} 
+      <ol> <li>
+      <h4>Book Name-{{post.file_name}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h4>
+       Book Description-{{post.description}}<br>
+       {% if user.is_authenticated %} 
+          <br><li><a href="{{post.file.url}}">Download-&nbsp;&nbsp;&nbsp;</a></li>
+       {% else %}
+               <p><a href="signup">Sign Up To Download-&nbsp;&nbsp;&nbsp;</a>{{post.file_name}}</p> 
+       {% endif %}
+
+       </li>
+       </ol>
+           {% comment %} <a href="{% url 'post.file'  %}"> {% endcomment %}
+           {% comment %} <img src="{{each_book.image.url}}" alt="No Image"></a> {% endcomment %}
+           {% comment %} <p>{{each_book.bookname}}</p> {% endcomment %}
+           {% comment %} <p>Rs.{{each_book.desc}}</p>    {% endcomment %}
+       {% endfor %}
+{% comment %} {% endif %} {% endcomment %}
+{% endblock body %}
+
+

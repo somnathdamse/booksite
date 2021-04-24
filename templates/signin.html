@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% static "images" as baseUrl %}
+{% block title %}Login{% endblock title %}
+
+ 
+{% block body %}
+
+ <div class="bgimg">
+        <div class="centerdiv">
+            <form method="POST" action="signin" >
+                {% comment %} <form action="loginprocess" method="POST"> {% endcomment %}
+		    	{% csrf_token %}
+                <div class="imgcontainer">
+                    <img style width: 1px src="{% static 'images/login_icon.png' %}" alt="Avatar" class="avatar">
+                </div>
+
+                <div class="container">
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" value='{{username}}' name="username" required>
+
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" value='{{password}}' name="password" required>
+
+                    <button type="submit">Sign in</button>
+                    <label>
+						<input type="checkbox" checked="checked" name="remember"> Remember me
+						</label>
+                </div>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock body %}

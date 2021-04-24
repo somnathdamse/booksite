@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %} 
+{% load static %} 
+{% static "images" as baseUrl %}
+
+
+{% block title %}UploadFiles{% endblock title %}
+
+{% block body %}
+<div class="container">
+
+<br>
+<h2>Please Upload your files here</h2><br>
+<form method='POST' action="upload" enctype='multipart/form-data'>
+{% csrf_token %}
+<input type='file' multiple name='uploadfile' required/><br>
+<label for="desc">Enter Book's Name</label><br>
+<textarea class="bookname" id="bookname" name="bookname" size="20" rows="1"  placeholder='Name of the book' required>{{bookname}}</textarea><br>
+<label for="desc">Brief Description of book</label><br>
+
+<textarea class="desc" id="desc" name="desc" size="50" rows="3"  placeholder='Describe the book' required>{{desc}}</textarea><br>
+<button class="btn btn-primary"  type='submit'>Upload file</button><br>
+</form>
+</div>
+{% endblock body %}
+
