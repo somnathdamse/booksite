@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-admin.site.site_header = "Bookstore Admin"
+admin.site.site_header = "Bookstore Admin Panel"
 admin.site.site_title = "Bookstore Admin Portal"
 admin.site.index_title = "Welcome to Bookstore Portal"
 

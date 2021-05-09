@@ -12,11 +12,25 @@ class Contact(models.Model):
        return self.name
 
 
-class myuploadfile(models.Model):
+# class myuploadfile(models.Model):
+#     file = models.FileField(upload_to='')
+#     description = models.TextField(max_length=50, unique=False,default=False, blank = False, null = False)
+#     file_name=models.TextField(max_length=50, unique=False,default=False, blank = False, null = False)
+#     uploaded_at = models.DateTimeField(auto_now_add=True)
+#     file_image = models.FileField(upload_to = '') 
+    
+# somnath
+#     def __str__(self):
+#        return self.description
+
+
+class bookstore(models.Model):
     file = models.FileField(upload_to='')
-    description = models.TextField(max_length=50, unique=False, blank = False, null = False)
-    file_name=models.TextField(max_length=50, unique=False, blank = False, null = False)
+    description = models.TextField(max_length=50, unique=False,default=False, blank = False, null = False)
+    file_name=models.TextField(max_length=50, unique=False,default=False, blank = False, null = False)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    file_image = models.FileField(upload_to = '') 
+    
 
     def __str__(self):
        return self.description

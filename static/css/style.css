@@ -95,8 +95,8 @@ body {
 .bgimg button {
     background-color: #4CAF50;
     color: white;
-    padding: 15px 25px;
-    margin: 0px 0;
+    padding: 10px 25px;
+    margin: 20px 0;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -117,7 +117,7 @@ body {
 /* Center the avatar image inside this container */
 .bgimg .imgcontainer {
     text-align: center;
-    margin: 040px 0 20px 0;
+    margin: 40px 0 20px 0;
 }
 
 /* Avatar image */
@@ -128,7 +128,7 @@ img.avatar {
 
 /* Add padding to containers */
 .bgimg .container {
-    padding: 16px;
+    padding: 5px;
 }
 
 /* The "Forgot password" text */
@@ -178,23 +178,29 @@ body {
 }
 .topnav .search-container {
     float: right;
-}
-.topnav input[type=text] {
-    margin-top: 8px;
-    margin-right: 211px;
+    width: 550px;
+    margin-right: 111px;
     margin-left: -98px;
-    padding: 5px;
+}
+.topnav .search-container input[type=text] {
+    margin-top: 8px;
+    margin-right: 101px;
+    margin-left: -98px;
+    padding: 4px;
+    width: 409px;
     font-size: 16px;
     border: none;
 }
+
+}
 .topnav .search-container button {
     float: right;
-    padding: 5px 0px;
-    margin-top: -23px;
-    margin-right: 42px;
-    background: #ddd;
-    font-size: 17px;
-    width: 11%;
+    padding: 0px 0px 0px 0px;
+    margin-top: -30px;
+    margin-right: 14px;
+    background: #dfdfe4;
+    font-size: 19px;
+    width: 9%;
     cursor: pointer;
 }
 .topnav .search-container button:hover {
@@ -204,7 +210,6 @@ body {
     .topnav .search-container {
         float: none;
     }
-    
     .topnav a,
     .topnav input[type=text],
     .topnav .search-container button {
@@ -215,8 +220,38 @@ body {
         margin: 0;
         padding: 1px;
     }
-    
     .topnav input[type=text] {
-        border: 15px solid #ccc;
+        margin-top: 12px;
+        margin-right: 20px;
+        margin-left: 0px;
+        padding: 3px;
+        width: 459px;
+        font-size: 17px;
+        border: none;
     }
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+.price {
+    color: grey;
+    font-size: 22px;
+}
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+.card button:hover {
+    opacity: 0.7;
 }

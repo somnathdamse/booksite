@@ -8,29 +8,56 @@
 
 {% block body %}
 
-<h2>Search Results :</h2>
+<h2 style="margin-left:10px">Search Results :</h2>
 {% comment %} {{ para.file}} {% endcomment %}
 {% comment %} {% if books %} {% endcomment %}
-       <h4>Book Name  and Book Description <h4>  
+{% if lenght > 0 %}
+    <div class="container-fluid" style=" height:350px;margin-left:45px;margin-bottom:35px;margin-top:20px;">
+       <div class="row" >
+           {% for post in allpost %}
+               <div class="col-sm-4" style=" height:350px;background-color:white;width:250px;margin-bottom:10px;border:1px Solid;border-radius:15px;"> 
+                   <img src="{{post.file_image.url}}" alt="{{post.image_name}}" style="width:95%;height:180px;position:center"><br>
+                      {% comment %} <h3>{{post.product_name}}</h3> {% endcomment %}
+                      {% comment %} <p class="price">Rs.{{post.price}}</p> {% endcomment %}
+                    <div style=" height:55px;">
+                       <h3>{{post.file_name}}</h3>
+                    </div>
+                    <div style=" height:25px;color:black;">
+                        <p  style="font-weight: lighter;">Description: {{post.description}}</p>
+                    </div>
+                    {% if user.is_authenticated %} 
+                       <div style=" margin-top:25px;">
+                           <p><a class="btn btn-primary" href="{{post.file.url}}">Download</a></p> 
+                         </div>
+                    {% else %}
+                       <div style="  margin-top:0px;height:0px;">
+                           <br><a class="btn btn-primary" href="signup">Sign Up to Download</a></li>
+                         </div>
+                    {% endif %}
+               </div>
+          {% endfor %}
+   {% else %}
+        <p style="font-weight:bold;margin-left:10px; font-size: 150%;">No Result</p>
+ {% endif %}
 
-      {% for post in allpost %} 
-      <ol> <li>
-      <h4>Book Name-{{post.file_name}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h4>
-       Book Description-{{post.description}}<br>
-       {% if user.is_authenticated %} 
-          <br><li><a href="{{post.file.url}}">Download-&nbsp;&nbsp;&nbsp;</a></li>
-       {% else %}
-               <p><a href="signup">Sign Up To Download-&nbsp;&nbsp;&nbsp;</a>{{post.file_name}}</p> 
-       {% endif %}
-
-       </li>
-       </ol>
-           {% comment %} <a href="{% url 'post.file'  %}"> {% endcomment %}
-           {% comment %} <img src="{{each_book.image.url}}" alt="No Image"></a> {% endcomment %}
-           {% comment %} <p>{{each_book.bookname}}</p> {% endcomment %}
-           {% comment %} <p>Rs.{{each_book.desc}}</p>    {% endcomment %}
-       {% endfor %}
-{% comment %} {% endif %} {% endcomment %}
 {% endblock body %}
 
 
+{% comment %} <ol> <li>
+<h4>Book Name-{{post.file_name}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <h4>
+Book Description-{{post.description}}<br>
+Book Image- <img src="{{post.file_image.url}}" alt="{{post.file_image}}" />  <br>
+{% if user.is_authenticated %} 
+    <br><li><a href="{{post.file.url}}">Download-&nbsp;&nbsp;&nbsp;</a></li>
+{% else %}
+        <p><a href="signup">Sign Up To Download-&nbsp;&nbsp;&nbsp;</a>{{post.file_name}}</p> 
+{% endif %}
+
+</li>
+</ol>
+    {% endcomment %}
+{% comment %} <a href="{% url 'post.file'  %}"> {% endcomment %}
+{% comment %} <img src="{{each_book.image.url}}" alt="No Image"></a> {% endcomment %}
+{% comment %} <p>{{each_book.bookname}}</p> {% endcomment %}
+{% comment %} <p>Rs.{{each_book.desc}}</p>    {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
