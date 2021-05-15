@@ -7,92 +7,16 @@ from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def index(request):
-     # listed = []
-     # for i in range(0,4):
-     #      listed.append(i)
-     # parent_list = [{'A':'val1','B':'val2', 'content': [["1.1", "2.2"]]},{'A':'val3','B':'val4', 'content': [["3.3", "4.4"]]}]
-     data = {
-               1: {
-                    "product_name" :"DM",
-                    "price" :100,
-                    "description" :"DMDMDMDMDMDM",
-               },
-               2: {
-                    "product_name" :"DM 2",
-                    "price" :10012,
-                    "description" :"DMDMDMDMDMDM 3",
-               },
-               3:{
-                    "product_name" :"DM 3",
-                    "price" :137892,
-                    "description" :"DMredfDMDMDM 5",
-               },
-               4:{
-                    "product_name" :"DM 4",
-                    "price" :13552,
-                    "description" :"DMjnmDMDMDM 5",
-               },
-               5:{
-                    "product_name" :"DM 5",
-                    "price" :177732,
-                    "description" :"DMDdfsdDMDM 5",
-               },
-               6:{
-                    "product_name" :"DM 6",
-                    "price" :92,
-                    "description" :"DMfdDMDM 6",
-               },
-               7: {
-                    "product_name" :"DM7",
-                    "price" :100,
-                    "description" :"DMDMDMDMDMDM",
-               },
-               8: {
-                    "product_name" :"DM8",
-                    "price" :10012,
-                    "description" :"DMDMDMDMDMDM 3",
-               },
-               9:{
-                    "product_name" :"DM 9",
-                    "price" :137892,
-                    "description" :"DMredfDMDMDM 5",
-               },
-               10:{
-                    "product_name" :"DM 10",
-                    "price" :13552,
-                    "description" :"DMjnmM 5",
-               },
-               11:{
-                    "product_name" :"DM 11",
-                    "price" :177732,
-                    "description" :"DdDMDM 5",
-               },
-               12:{
-                    "product_name" :"DM 12",
-                    "price" :92,
-                    "description" :"DMfdDM 6",
-               }
-          }
+     
      allpost = bookstore.objects.all()
      # print(allpost)
 
      context = {
-          "variable":"Sent a variable",
-          "var2":"How is that",
-          "data":data,
-          "count" : 1,
           'allpost': allpost
-          # "parent_list" : parent_list
      }
 
 
      return render(request, 'index.html', context)
-
-# def loginprocess(request):
-#      first_name = request.POST['uname']
-#      password = request.POST['psw']
-#      # pass
-#      return render(request, 'index.html')
 
 def contact(request):
      return render(request, 'contact.html')
@@ -130,11 +54,8 @@ def contactprocess(request):
      # return render(request, 'contact.html')
 
 def about(request):
-     som = {
-          "d":"am",
-          "b":"som",
-     }
-     return render(request, 'about.html', som)
+  
+     return render(request, 'about.html')
 
 # def login(request):
 #      return render(request, 'login.html')
@@ -149,8 +70,10 @@ def upload(request):
           file_name= request.POST["bookname"]
           file_imagex= request.FILES["imgfile"]
           description  = request.POST["desc"]      
-          if file_name is "":
-               print("error")
+          if  file_name.isspace() or description.isspace() :
+                messages.error(request, 'File name or Description can not be empty !!!')       
+                return render(request,'upload.html')
+
           else:
                fs = FileSystemStorage()
                
@@ -182,6 +105,24 @@ def search(request):
      allpost=bookstore.objects.filter(file_name__icontains=query)
      para={ 'allpost':allpost, "lenght": len(allpost) }
      return render(request,"search.html", para)
+
+
+def signup(request):
+             return render(request,"signup.html")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
      # print(request.GET['search'])
      
      # if request.method == 'GET':
@@ -207,8 +148,6 @@ def search(request):
      #     print ("book found")
      #     return render(request,"search.html")
 
-def signup(request):
-             return render(request,"signup.html")
 
 
 # def search(request):        
